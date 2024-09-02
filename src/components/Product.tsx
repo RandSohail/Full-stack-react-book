@@ -12,13 +12,7 @@ export interface IProductProps {
 }
 
 export default class Product extends React.Component<IProductProps> {
-  constructor(props: IProductProps) {
-    super(props);
-    this.handelUpVote = this.handelUpVote.bind(this);
-  }
-  handelUpVote() {
-    this.props.onVote(this.props.id);
-  }
+  handelUpVote = () => this.props.onVote(this.props.id);
 
   render() {
     return (
