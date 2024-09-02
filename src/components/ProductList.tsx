@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import productsData from '../data/Product';
-import Product from './Product';
+import Product, { IProductProps } from './Product';
 
 interface ProductListState {
   products: Array<{
@@ -19,20 +19,16 @@ export default class ProductList extends React.Component<
   any,
   ProductListState
 > {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      products: []
-    };
+  state = {
+    products: []
+  };
 
-    this.handleProductUpVote = this.handleProductUpVote.bind(this);
-  }
   componentDidMount() {
     this.setState({ products: productsData });
   }
 
-  handleProductUpVote(productId: number) {
-    const nextProducts = this.state.products.map((product) => {
+  handleProductUpVote = (productId: number) => {
+    const nextProducts = this.state.products.map((product: IProductProps) => {
       if (product.id === productId) {
         return Object.assign({}, product, {
           votes: product.votes + 1
@@ -44,7 +40,8 @@ export default class ProductList extends React.Component<
     this.setState({
       products: nextProducts
     });
-  }
+  };
+
   // render is the only required method for class component and it returns HTML || JSX Element
   render() {
     const products = this.state.products.sort(

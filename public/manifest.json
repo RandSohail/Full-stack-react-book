@@ -1,0 +1,6 @@
+{
+  "name": "Voting App",
+  "short_name": "Voting",
+  "start_url": "./index.html",
+  "display": "standalone"
+}
